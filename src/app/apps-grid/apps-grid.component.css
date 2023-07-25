@@ -1,0 +1,91 @@
+/* Estilos para el componente apps-grid */
+.apps-grid {
+    display: flex;
+    justify-content: center; 
+    width: 75%;
+    /* Centra la cuadrícula horizontalmente */
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+  }
+  
+  .col {
+    flex: 0 0 calc(16.6667% - 20px); /* Ajusta el tamaño de cada columna (6 columnas en una fila) */
+    margin: 10px;
+    max-width: 200px; /* Limita el ancho máximo de las tarjetas */
+  }
+  
+  .card {
+    background-color: #f1f1f1;
+    border-color: black;
+    padding: 10px;
+    text-align: center;
+  }
+  .card.selected {
+    /* Estilos para el card seleccionado */
+    background-color: #ff9900; /* Color de fondo seleccionado */
+    color: #fff; /* Color de texto seleccionado */
+  }
+  
+  .modal {
+    /* Estilos del modal */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .app-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .app-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .developer-name {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .rating {
+    display: flex;
+    justify-content: center; /* Centrar las estrellas horizontalmente */
+    margin-bottom: 10px; /* Agregar espacio inferior */
+  }
+  .star {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .star i {
+    font-size: 20px;
+  }
+  
+  .star.filled i {
+    color: #ff9900; /* Color de las estrellas rellenadas */
+  }
+  
+  .star i.fas {
+    /* Estilo para las estrellas rellenadas */
+    -webkit-text-stroke: 1px #ff9900; /* Contorno */
+    text-shadow: 1px 1px 1px #ff9900; /* Sombra */
+  }
+  
+  .star i.far {
+    /* Estilo para las estrellas no rellenadas */
+    -webkit-text-stroke: 1px #ff9900; /* Contorno */
+    color: transparent; /* Hacer el icono transparente */
+  }
+  .app-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }

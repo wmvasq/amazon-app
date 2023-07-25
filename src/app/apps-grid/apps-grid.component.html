@@ -1,0 +1,28 @@
+<div class="apps-grid">
+    <div class="row">
+      <div class="col" *ngFor="let app of apps">
+        <div class="card" [ngClass]="{ 'selected': app === selectedApp }" (click)="openModalEvent.emit(app)">          
+            <img class="image/webp"
+             src="{{ app.imagen}}" 
+             >  
+          <h3 class="app-name">{{ app.nombre }}</h3>  
+          <p class="developer-name">{{ app.dev }}</p>  
+          
+          <div class="rating">
+            <span *ngFor="let i of [1, 2, 3, 4, 5]" class="star" [ngClass]="{ 'filled': i <= app.calificacion }">
+              <i [ngClass]="i <= app.calificacion ? 'fas fa-star' : 'far fa-star'"></i>
+            </span>
+          </div>
+  
+          <p class="app-price">{{ app.precio<0.5? 'FREE':'$'+ app.precio}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Modal -->
+<ng-template #modalTemplate>
+  <div class="modal">
+    <!-- Contenido del modal -->
+  </div>
+</ng-template>

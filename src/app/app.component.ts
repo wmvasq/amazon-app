@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'amazon-app';
+  showModal = false;
+  selectedApp: any;
+
+  openModal(app: any) {
+    this.selectedApp = app;
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 }
