@@ -5,13 +5,14 @@
   <div class="filter-container">
     <label for="categorySelect">Filtrar por categoría:</label>
     <!--select-->
-    <select [(ngModel)]="selectedCategory" (change)="onCategorySelect($event)">      
+    <select [(ngModel)]="selectedCategory" (ngModelChange)="onCategorySelect($event)">  
+      <option value="0">Todas</option>    
       <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
     </select>
 <!--select-->
   </div>
   
-  <app-apps-grid (openModalEvent)="openModal($event)"></app-apps-grid>
+  <app-apps-grid [selectedCategory]="selectedCategory" (openModalEvent)="openModal($event)"></app-apps-grid>
 </div>
 
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoryService } from './services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,31 @@ export class AppComponent {
   title = 'amazon-app';
   showModal = false;
   selectedApp: any;
-  categories = [
-    { id: '0', name: 'Todas las categorías' }, 
-    { id: '1', name: 'Categoria 1' },
-    { id: '2', name: 'Categoria 2' },
+  categories: any = [
+   // { id: '0', name: 'Todas las categorías' }, 
+    //{ id: '1', name: 'Categoria 1' },
+   // { id: '2', name: 'Categoria 2' },
   ];
-  selectedCategory: any = '0'; 
-  onCategorySelect(event: any) {
-    const selectedCategory = event?.target?.value;
-    this.selectedCategory = selectedCategory || '0'; 
+
+  constructor(private categoryService: CategoryService) { }
+  ngOnInit(): void {
+    this.getCategorias();
+  }
+  getCategorias(): void {
+    this.categoryService.getCategorias().subscribe(
+      (categorias) => {
+        this.categories = categorias;
+      },
+      (error) => {
+        console.error('Error al obtener las categorías:', error);
+      }
+    );
+  }
+  selectedCategory: number = 0; 
+  onCategorySelect(categoryId: number): void {
+    
+    this.selectedCategory = categoryId;
+    
   }
   openModal(app: any) {
     this.selectedApp = app;
