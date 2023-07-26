@@ -1,8 +1,16 @@
 <div>
 <app-top-bar></app-top-bar> 
-<app-dropdown></app-dropdown>
+
 <div class="content" >
- 
+  <div class="filter-container">
+    <label for="categorySelect">Filtrar por categoría:</label>
+    <!--select-->
+    <select [(ngModel)]="selectedCategory" (change)="onCategorySelect($event)">      
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+<!--select-->
+  </div>
+  
   <app-apps-grid (openModalEvent)="openModal($event)"></app-apps-grid>
 </div>
 
@@ -28,14 +36,30 @@
       </div>
     </div>
 </div>
-<hr> 
+
 <div class="rating">
   <span *ngFor="let i of [1, 2, 3, 4, 5]" class="star" [ngClass]="{ 'filled': i <= selectedApp?.calificacion }">
     <i [ngClass]="i <= selectedApp?.calificacion ? 'fas fa-star' : 'far fa-star'"></i>
+    
   </span>
+  <b  >   &nbsp;  {{selectedApp?.calificacion }}</b> 
 </div>
-<hr>
-    <!-- Botón de cerrar -->
-    <button class="btn-close" (click)="closeModal()">Cerrar</button>
+
+<div class="user-comments" *ngIf="selectedApp?.comments?.length">
+ 
+  <div *ngFor="let comment of selectedApp?.comments" class="user-comment">
+    <div class="user-avatar">
+      <i class="fa fa-user"></i>
+    </div>
+    <div class="user-details">
+      <p><strong>{{ comment.username }}</strong></p>
+      <p>{{ comment.comment }}</p>
+    </div>
+  </div>
+</div>
+<div class="buttons">
+  <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+  <button *ngIf="!selectedApp?.instalado" class="btn-install">Instalar</button>
+</div>
   
 </app-modal>
