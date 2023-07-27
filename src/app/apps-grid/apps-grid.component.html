@@ -1,4 +1,4 @@
-<div class="content">
+<div *ngIf="filteredApps.length > 0; else notFoundSection" class="content">
     <div class="row">
       <div class="col" *ngFor="let app of filteredApps">
         <div class="card" [ngClass]="{ 'selected': app === selectedApp }" (click)="openModalEvent.emit(app)">          
@@ -19,7 +19,39 @@
       </div>
     </div>
   </div>
-  
+  <!-- seccion not found-->
+  <ng-template #notFoundSection>
+    
+
+<section class="page_404">
+  <div class="container">
+    <div class="row"> 
+    <div class="col-sm-12 ">
+    <div class="col-sm-10 col-sm-offset-1  text-center">
+    <div class="four_zero_four_bg">
+      <h1 class="text-center ">404</h1>
+    
+    
+    </div>
+    
+    <div class="contant_box_404">
+    <h3 class="h2">
+    Oops!
+    </h3>
+    
+    <p>Buscamos arriba y abajo,  pero no pudimos encontrar lo que estás buscando. Busquemos un mejor lugar para que vayas.</p>
+    
+    <a href="" class="link_404">Go to Home</a>
+  </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+  </ng-template>
+  <!-- seccion not found-->
 <!-- Modal -->
 <ng-template #modalTemplate>
   <div class="modal">
