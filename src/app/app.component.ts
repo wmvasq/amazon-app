@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoryService } from './services/app.service';
+import { AppService, } from './services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +16,12 @@ export class AppComponent {
    // { id: '2', name: 'Categoria 2' },
   ];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private appService: AppService) { }
   ngOnInit(): void {
     this.getCategorias();
   }
   getCategorias(): void {
-    this.categoryService.getCategorias().subscribe(
+    this.appService.getCategorias().subscribe(
       (categorias) => {
         this.categories = categorias;
       },

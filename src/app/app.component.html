@@ -46,15 +46,15 @@
   <b  >   &nbsp;  {{selectedApp?.calificacion }}</b> 
 </div>
 
-<div class="user-comments" *ngIf="selectedApp?.comments?.length">
+<div class="user-comments" *ngIf="selectedApp?.comentarios?.length">
  
-  <div *ngFor="let comment of selectedApp?.comments" class="user-comment">
+  <div *ngFor="let comentario of selectedApp?.comentarios" class="user-comment">
     <div class="user-avatar">
       <i class="fa fa-user"></i>
     </div>
     <div class="user-details">
-      <p><strong>{{ comment.username }}</strong></p>
-      <p>{{ comment.comment }}</p>
+      <p><strong>{{ comentario.usuario }}</strong></p>
+      <p>{{ comentario.comentario }}</p>
     </div>
   </div>
 </div>

@@ -1,21 +1,30 @@
-/* Estilos para el componente apps-grid */
+
 .apps-grid {
     display: flex;
     justify-content: center; 
     width: 75%;
-    /* Centra la cuadrícula horizontalmente */
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 50%;
+   
+    padding: 50px;
+    text-align: center;
   }
   
   .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra las tarjetas horizontalmente */
+    justify-content: center; 
   }
   
   .col {
-    flex: 0 0 calc(16.6667% - 20px); /* Ajusta el tamaño de cada columna (6 columnas en una fila) */
+    flex: 0 0 calc(16.6667% - 20px); 
     margin: 10px;
-    max-width: 200px; /* Limita el ancho máximo de las tarjetas */
+    max-width: 200px; 
   }
   
   .card {
@@ -25,13 +34,13 @@
     text-align: center;
   }
   .card.selected {
-    /* Estilos para el card seleccionado */
-    background-color: #ff9900; /* Color de fondo seleccionado */
-    color: #fff; /* Color de texto seleccionado */
+    
+    background-color: #ff9900; 
+    color: #fff;
   }
   
   .modal {
-    /* Estilos del modal */
+   
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -56,8 +65,8 @@
   
   .rating {
     display: flex;
-    justify-content: center; /* Centrar las estrellas horizontalmente */
-    margin-bottom: 10px; /* Agregar espacio inferior */
+    justify-content: center; 
+    margin-bottom: 10px;
   }
   .star {
     display: inline-block;
@@ -70,19 +79,19 @@
   }
   
   .star.filled i {
-    color: #ff9900; /* Color de las estrellas rellenadas */
+    color: #ff9900; 
   }
   
   .star i.fas {
-    /* Estilo para las estrellas rellenadas */
-    -webkit-text-stroke: 1px #ff9900; /* Contorno */
-    text-shadow: 1px 1px 1px #ff9900; /* Sombra */
+    
+    -webkit-text-stroke: 1px #ff9900; 
+    text-shadow: 1px 1px 1px #ff9900; 
   }
   
   .star i.far {
-    /* Estilo para las estrellas no rellenadas */
-    -webkit-text-stroke: 1px #ff9900; /* Contorno */
-    color: transparent; /* Hacer el icono transparente */
+   
+    -webkit-text-stroke: 1px #ff9900; 
+    color: transparent; 
   }
   .app-price {
     font-size: 16px;

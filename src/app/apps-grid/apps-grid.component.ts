@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { App } from '../models/App';
+import { AppService } from '../services/app.service';
 interface CategoryData {
   selectedCategory: number;
 }
@@ -11,9 +12,10 @@ interface CategoryData {
 })
 export class AppsGridComponent {
   @Output() openModalEvent = new EventEmitter<any>();
-  @Input() selectedCategory: number=0;
-  
-  apps:App[] = [
+  @Input() selectedCategory: number = 0;
+
+  apps: App[] = [];
+  /* [
     { nombre: 'App 1', 
     categoria:2,
     dev: 'Desarrollador 1', 
@@ -43,26 +45,24 @@ export class AppsGridComponent {
     { nombre: 'App 15', categoria:2,dev: 'Desarrollador 15', calificacion:4, precio:3.12,imagen:"/assets/img/app-icons/15.webp",url:"/assets/img/app-screenshots/1.webp",instalado:false,descripcion:"El jugador va disponiendo diferentes plantas mutantes con distintas características de ataque o defensa. ", comments:[]},
     { nombre: 'App 16', categoria:1,dev: 'Desarrollador 16', calificacion:1, precio:3.14,imagen:"/assets/img/app-icons/16.webp",url:"/assets/img/app-screenshots/1.webp",instalado:false,descripcion:"El jugador va disponiendo diferentes plantas mutantes con distintas características de ataque o defensa. ", comments:[]},
     { nombre: 'App 17', categoria:2,dev: 'Desarrollador 17', calificacion:3, precio:6,imagen:"/assets/img/app-icons/17.webp",url:"/assets/img/app-screenshots/2.webp",instalado:false,descripcion:"El jugador va disponiendo diferentes plantas mutantes con distintas características de ataque o defensa. ", comments:[]},
-    { nombre: 'App 18', categoria:3,dev: 'Desarrollador 18', calificacion:3, precio:2,imagen:"/assets/img/app-icons/18.webp",url:"/assets/img/app-screenshots/1.webp",instalado:false,descripcion:"El jugador va disponiendo diferentes plantas mutantes con distintas características de ataque o defensa. ", comments: [
-      { username: 'Usuario1', comment: 'Este es un comentario de prueba.' },
-      { username: 'Usuario2', comment: 'Otro comentario interesante.' }
-    ]},
-  ];
-  filteredApps:App[]= [];
-  
-  
-//select 
-ngOnInit(): void {
-  /*this.categoryService.getCategorias().subscribe(categories => {
-    this.categories = categories;
-  });*/
+    { nombre: 'App 18', categoria:3,dev: 'Desarrollador 18', calificacion:3, precio:2,imagen:"/assets/img/app-icons/18.webp",url:"/assets/img/app-screenshots/1.webp",instalado:false,descripcion:"El jugador va disponiendo diferentes plantas mutantes con distintas características de ataque o defensa. ", comments:[]},
+  ];*/
+  filteredApps: App[] = [];
+  selectedApp: any; // 
+  constructor(private appService: AppService) { }
+  //select 
+  ngOnInit(): void {
 
-  
-  this.filteredApps = this.apps;
-}
 
-//
- selectedApp: any; // 
+    this.filtrarApps(null);
+  }
+
+  filtrarApps(categoria: any) {
+    this.appService.getApps(categoria).subscribe(apps => {
+      this.filteredApps = apps;
+    });
+  }
+
 
   openModal(app: any) {
     this.openModalEvent.emit(app);
@@ -76,12 +76,13 @@ ngOnInit(): void {
   filterApps(): void {
     console.log(this.selectedCategory)
     if (this.selectedCategory != 0) {
-      
-      this.filteredApps = this.apps.filter(app => app.categoria == this.selectedCategory);
-    
+      this.filtrarApps(this.selectedCategory);
+      //this.filteredApps = this.apps.filter(app => app.categoria == this.selectedCategory);
+
     } else {
-      this.filteredApps=this.apps.filter(app => true==true);
+      this.filtrarApps(null);
+      // this.filteredApps = this.apps.filter(app => true == true);
     }
-    
+
   }
 }
