@@ -38,9 +38,13 @@
     </div>
 </div>
 
+<div *ngIf="showSuccessMessage" class="success-message">
+  Calificación actualizada con éxito!
+</div>
+
 <div class="rating">
   <span *ngFor="let i of [1, 2, 3, 4, 5]" class="star" [ngClass]="{ 'filled': i <= selectedApp?.calificacion }">
-    <i [ngClass]="i <= selectedApp?.calificacion ? 'fas fa-star' : 'far fa-star'"></i>
+    <i  (click)="actualizarCalificacion(i)" [ngClass]="i <= selectedApp?.calificacion ? 'fas fa-star' : 'far fa-star'"></i>
     
   </span>
   <b  >   &nbsp;  {{selectedApp?.calificacion }}</b> 

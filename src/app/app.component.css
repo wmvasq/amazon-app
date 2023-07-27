@@ -66,8 +66,8 @@
   .rating {
     display: flex;
     border-bottom: 1px solid #ccc;
-    justify-content: center; /* Centrar las estrellas horizontalmente */
-    margin-bottom: 10px; /* Agregar espacio inferior */
+    justify-content: center;  
+    margin-bottom: 10px;  
   }
   .star {
     display: inline-block;
@@ -80,22 +80,22 @@
   }
   
   .star.filled i {
-    color: #ff9900; /* Color de las estrellas rellenadas */
+    color: #ff9900;  
   }
   
   .star i.fas {
-    /* Estilo para las estrellas rellenadas */
-    -webkit-text-stroke: 1px #ff9900; /* Contorno */
-    text-shadow: 1px 1px 1px #ff9900; /* Sombra */
+    
+    -webkit-text-stroke: 1px #ff9900;  
+    text-shadow: 1px 1px 1px #ff9900; 
   }
   
   .star i.far {
-    /* Estilo para las estrellas no rellenadas */
-    -webkit-text-stroke: 1px #ff9900; /* Contorno */
-    color: transparent; /* Hacer el icono transparente */
+    
+    -webkit-text-stroke: 1px #ff9900;  
+    color: transparent; 
   }
 
-  /*botones*/
+  
 
   .buttons {
     display: flex;
@@ -112,7 +112,7 @@
     background-color: #4caf50;
     color: white;
   }
-  /*commentss*/
+  commentss*/
   .user-comments {
     margin-top: 20px;
   }
@@ -154,5 +154,17 @@
   }
   
   .user-comment:last-child {
-    border-bottom: none; /* Para evitar el separador después del último comentario */
+    border-bottom: none; 
+  }
+
+  .success-message {
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999; 
   }
